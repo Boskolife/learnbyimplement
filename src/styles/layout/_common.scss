@@ -1,0 +1,827 @@
+#wrapper {
+    overflow: hidden;
+}
+
+.container {
+    max-width: 860px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.primary_btn {
+    display: inline-block;
+    background-color: $secondary-violet;
+    padding: 14px 24px;
+    color: $white;
+    font-weight: 700;
+    @include adaptive-value("font-size", 20, 16, 1);
+    border-radius: 100px;
+    margin: 0 auto;
+    transition: all .3s ease;
+    border: 1px solid transparent;
+
+    &:hover {
+        background-color: $light-violet;
+        transition: all .3s ease;
+        color: $violet;
+        border-color: $violet;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        scale: 1;
+    }
+
+    50% {
+        scale: 0.9;
+    }
+
+    100% {
+        scale: 1.1;
+    }
+}
+
+@keyframes rotate {
+    100% {
+        rotate: 360deg;
+    }
+}
+
+@keyframes StepsRotate {
+    0% {
+        rotate: 0deg;
+    }
+
+    33% {
+        rotate: 180deg;
+    }
+
+    66% {
+        rotate: 270deg;
+    }
+
+    100% {
+        rotate: 180deg;
+    }
+}
+
+@keyframes floatAround {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    25% {
+        transform: translate(10px, -10px);
+    }
+
+    50% {
+        transform: translate(0px, -20px);
+    }
+
+    75% {
+        transform: translate(-10px, -10px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+.global-section {
+    padding: 30px 0;
+
+    .decorations {
+        @include adaptive-value("margin-bottom", 60, 30, 1);
+        @include adaptive-value("width", 30, 13, 1);
+    }
+
+    h2 {
+        @include adaptive-value("margin-bottom", 32, 20, 1);
+    }
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    width: 15px !important;
+    height: 30px !important;
+
+    &::after {
+        display: none;
+    }
+}
+
+.swiper-button-prev {
+    rotate: 180deg;
+    left: 0 !important;
+}
+
+.swiper-button-next {
+    right: 0 !important;
+}
+
+.swiper-button-disabled {
+    display: none !important;
+}
+
+.hero {
+    @include adaptive-value("padding-top", 178, 190, 1);
+    @include adaptive-value("padding-bottom", 242, 123, 1);
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        @include adaptive-value("width", 1748, 855, 1);
+        @include adaptive-value("height", 1748, 855, 1);
+        border-radius: 50%;
+        background-color: $violet;
+        @include adaptive-value("top", -1040, -275, 1);
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: -1;
+    }
+
+    .content {
+        text-align: center;
+        position: relative;
+    }
+
+    .decorations {
+        position: absolute;
+
+        &_1 {
+            left: -20%;
+            top: -15%;
+
+            @include media ("<phone") {
+                display: none;
+            }
+        }
+
+        &_2 {
+            left: 50%;
+            transform: translateX(-50%);
+            top: -25%;
+            animation: pulse 1.6s linear infinite alternate;
+
+            @include media ("<phone") {
+                top: -45%;
+                rotate: -12deg;
+                left: 43px;
+                width: 17px;
+            }
+        }
+
+        &_3 {
+            right: -30%;
+            bottom: -80%;
+            animation: rotate 10s linear infinite alternate;
+        }
+
+        &_4 {
+            left: -30%;
+            bottom: -55%;
+            animation: StepsRotate 5s linear infinite;
+        }
+
+        &_5 {
+            top: -160%;
+            right: -15%;
+            @include adaptive-value("width", 162, 81, 1);
+            @include adaptive-value("height", 133, 66, 1);
+
+
+            @include media ("<desktop") {
+                top: -80px;
+                right: -15px;
+            }
+
+            @include media ("<tablet") {
+                top: -60px;
+            }
+
+            @include media ("<phone") {
+                right: 10px;
+                rotate: -17deg;
+            }
+        }
+    }
+
+    .label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $green;
+        font-weight: 500;
+        border-radius: 80px;
+        text-align: center;
+        position: absolute;
+
+        &_1 {
+            @include adaptive-value("font-size", 34, 25, 1);
+            @include adaptive-value("width", 220, 168, 1);
+            @include adaptive-value("height", 60, 57, 1);
+            right: -22%;
+            top: -50px;
+            rotate: 10deg;
+
+
+            @include media ("<widescreen") {
+                top: -90px;
+                right: -5%;
+            }
+
+            @include media ("<desktop") {
+                top: -140px;
+            }
+
+            @include media ("<tablet") {
+                top: -120px;
+            }
+        }
+
+        &_2 {
+            @include adaptive-value("width", 115, 72, 1);
+            @include adaptive-value("height", 50, 32, 1);
+            rotate: -18deg;
+            top: 50px;
+            right: -8%;
+            @include adaptive-value("font-size", 28, 18, 1);
+            animation: pulse 2s linear infinite alternate;
+
+            @include media ("<desktop") {
+                top: -60px;
+                right: 50px;
+            }
+
+            @include media ("<tablet") {
+                top: -40px;
+            }
+
+            .cross {
+                top: 30%;
+                right: 45%;
+                transform: translate(50%, -50%);
+                rotate: 16deg;
+                @include adaptive-value("width", 98, 63, 1);
+            }
+        }
+    }
+
+    .title {
+        @include adaptive-value("font-size", 72, 40, 1);
+        font-weight: 700;
+        color: $white;
+        line-height: 112%;
+        @include adaptive-value("margin-bottom", 25, 16, 1);
+    }
+
+    .text {
+        @include adaptive-value("font-size", 32, 20, 1);
+        font-weight: 600;
+        color: $white;
+        line-height: 100%;
+        @include adaptive-value("margin-bottom", 34, 16, 1);
+
+        span {
+            color: $green;
+
+            @include media ("<phone") {
+                display: block;
+            }
+        }
+    }
+}
+
+.info {
+
+    .container {
+        position: relative;
+    }
+
+    .content {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        @include adaptive-value("gap", 60, 30, 1);
+        text-align: center;
+    }
+
+    .outter_decor {
+        position: absolute;
+
+        &_1 {
+            bottom: 1%;
+            right: -35%;
+            animation: rotate 3s linear infinite alternate;
+
+            @include media ("<tablet") {
+                display: none
+            }
+        }
+
+        &_2 {
+            bottom: 23%;
+            left: -25%;
+            animation: StepsRotate 10s linear infinite alternate;
+
+            @include media ("<tablet") {
+                display: none
+            }
+        }
+
+    }
+
+    .decorations {
+        @include adaptive-value("margin-bottom", 60, 30, 1);
+        @include adaptive-value("width", 30, 13, 1);
+    }
+
+    .item {
+        width: 100%;
+
+        h2 {
+            @include adaptive-value("margin-bottom", 32, 20, 1);
+        }
+
+        p {
+            span {
+                color: $secondary-violet;
+            }
+        }
+
+        &:nth-child(1) {
+            h2 {
+                margin-bottom: 16px;
+            }
+
+            a {
+                text-decoration: underline;
+                transition: all .3s ease;
+
+                &:hover {
+                    background-color: $violet;
+                    border-radius: 10px;
+                    padding: 3px 10px;
+                    transition: all .3s ease;
+                    color: $white;
+                }
+            }
+
+        }
+
+        &:nth-child(2) {
+            p {
+                text-align: start;
+            }
+        }
+
+        ul {
+            width: 100%;
+            @include adaptive-value("margin-bottom", 32, 20, 1);
+
+            li {
+                width: 100%;
+                background-color: $white;
+                @include adaptive-value("border-radius", 24, 16, 1);
+                @include adaptive-value("padding", 30, 17, 1);
+                text-align: center;
+                @include adaptive-value("font-size", 24, 16, 1);
+                color: $violet;
+
+                &:not(:last-child) {
+                    margin-bottom: 12px;
+                }
+            }
+        }
+    }
+
+    .useless_wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+
+        @include media ("<tablet") {
+            flex-direction: column;
+        }
+    }
+
+    .useless_item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        .cross_icon {
+            @include adaptive-value("width", 28, 17, 1);
+            @include adaptive-value("height", 28, 17, 1);
+        }
+    }
+}
+
+.included {
+    text-align: center;
+
+    .content {
+        display: grid;
+        grid-template: 1fr / repeat(auto-fit, minmax(320px, 1fr));
+        gap: 20px;
+
+        @include media ("<xr-phone") {
+            grid-template: 1fr / 1fr;
+        }
+    }
+
+    .card {
+        border-radius: 24px;
+        border: 3px dashed $violet;
+        background-color: $secondary-violet;
+        padding: 36px;
+        text-align: start;
+
+        h2 {
+            color: $white;
+            margin-bottom: 8px;
+        }
+
+        p {
+            color: $white;
+            @include adaptive-value("font-size", 24, 16, 1);
+        }
+    }
+}
+
+.unlock {
+    text-align: center;
+
+    .container {
+        max-width: 1206px;
+    }
+
+    .content {
+        @include adaptive-value("margin-bottom", 32, 20, 1);
+    }
+
+    .swiper_unlock {
+        overflow: visible;
+    }
+
+    .card_slide {
+        width: 100%;
+        height: 215px;
+        @include adaptive-value(" border-radius", 24, 16, 1);
+        position: relative;
+        overflow: hidden;
+        display: grid;
+        place-items: center;
+
+        &::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(76, 98, 138, 0.68);
+            z-index: -1;
+        }
+    }
+
+    .card_bg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -2;
+    }
+
+    .card_label {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        .icon {
+            width: 22px;
+            height: 24px;
+        }
+
+        span {
+            font-size: 20px;
+            font-weight: 500;
+            color: $white;
+            text-transform: capitalize;
+        }
+    }
+}
+
+.description {
+    text-align: center;
+
+    .container {
+        position: relative;
+    }
+
+    .decor_icon {
+        position: absolute;
+
+        @include media ("<desktop") {
+            display: none;
+        }
+
+        &_1 {
+            bottom: 7%;
+            left: -20%;
+            animation: rotate 10s linear infinite alternate;
+        }
+
+        &_2 {
+            bottom: 33%;
+            right: -20%;
+            animation: rotate 3s linear infinite alternate;
+        }
+
+        &_3 {
+            width: 54px;
+            height: 54px;
+            top: 27%;
+            left: -20%;
+            animation: rotate 6s linear infinite alternate;
+        }
+    }
+
+    ul {
+        @include adaptive-value("margin-bottom", 60, 30, 1);
+
+        li {
+            @include adaptive-value("font-size", 24, 16, 1);
+            color: $violet;
+            text-align: start;
+            display: flex;
+            align-items: flex-end;
+            gap: 14px;
+            line-height: 100%;
+
+
+            &:not(:last-child) {
+                margin-bottom: 24px;
+            }
+
+            &::before {
+                content: url(../img/svg/list_item.svg);
+                width: 40px;
+                height: 44px;
+            }
+        }
+    }
+
+    .owners_review {
+        @include adaptive-value("margin-bottom", 60, 30, 1);
+    }
+
+    .review {
+        background-color: $secondary-violet;
+        @include adaptive-value("border-radius", 24, 16, 1);
+        @include adaptive-value("padding", 36, 24, 1);
+        text-align: start;
+
+        &:not(:last-child) {
+            margin-bottom: 20px;
+        }
+
+        &_icon {
+            width: 27px;
+            height: 19px;
+            @include adaptive-value("margin-bottom", 18, 12, 1);
+        }
+
+        &_text {
+            color: $black;
+            @include adaptive-value("margin-bottom", 18, 12, 1);
+            font-weight: 500;
+        }
+
+        .reviwer {
+            color: $black;
+            @include adaptive-value("font-size", 20, 14, 1);
+        }
+    }
+
+    .list_bg {
+        background-color: $white;
+        @include adaptive-value("border-radius", 24, 16, 1);
+        @include adaptive-value("padding", 36, 24, 1);
+
+        ul {
+            margin: 0;
+        }
+    }
+}
+
+.guarantee {
+    text-align: center;
+
+    h2 {
+        position: relative;
+        width: max-content;
+        margin: 0 auto;
+        @include adaptive-value("margin-bottom", 32, 20, 1);
+
+        .title_icon {
+            position: absolute;
+            @include adaptive-value("top", -15, -10, 1);
+            @include adaptive-value("left", -25, -15, 1);
+            @include adaptive-value("width", 31, 19, 1);
+            @include adaptive-value("height", 34, 21, 1);
+        }
+    }
+
+    h3 {
+        color: $secondary-violet;
+        margin-bottom: 16px;
+    }
+
+    p {
+        @include adaptive-value("margin-bottom", 32, 20, 1);
+    }
+
+    .primary_btn {
+        display: block;
+        width: max-content;
+        margin-bottom: 10px;
+    }
+
+    span {
+        @include adaptive-value("font-size", 16, 14, 1);
+    }
+}
+
+.reviews {
+    text-align: center;
+
+    .container {
+        position: relative;
+    }
+
+    .decorations {
+        display: none;
+
+        @include media ("<phone") {
+            display: block;
+        }
+    }
+
+    .decorations_2 {
+        position: absolute;
+        right: -15%;
+        top: -40px;
+        animation: floatAround 3s ease-in-out infinite;
+    }
+
+    .swiper_review {
+        overflow: visible;
+    }
+
+    .swiper-wrapper {
+        @include media (">desktop") {
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 32px;
+        }
+    }
+
+    .swiper-slide {
+        width: 48%;
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+        @include media (">desktop") {
+            display: none;
+        }
+    }
+
+    .review_card {
+        text-align: start;
+    }
+
+    .review_img {
+        width: 100%;
+        height: auto;
+        @include adaptive-value("margin-bottom", 16, 11, 1);
+    }
+
+    .reviewer {
+        color: $black;
+        font-weight: 700;
+        @include adaptive-value("font-size", 18, 12, 1);
+    }
+}
+
+.final {
+
+    .content {
+        text-align: center;
+        background-color: $secondary-violet;
+        @include adaptive-value("border-radius", 24, 16, 1);
+        @include adaptive-value("padding", 23, 18, 1);
+        @include adaptive-value("margin-bottom", 60, 30, 1);
+
+        &_body {
+            @include adaptive-value("border-radius", 24, 16, 1);
+            border: 1px dashed $violet;
+            @include adaptive-value("padding-top", 85, 50, 1);
+            @include adaptive-value("padding-bottom", 85, 50, 1);
+            padding-left: 15px;
+            padding-right: 15px;
+
+            h2,
+            p {
+                color: $white
+            }
+
+            span {
+                color: $violet;
+                font-weight: 700;
+            }
+        }
+
+        form {
+            max-width: 520px;
+            width: 100%;
+            margin: 0 auto;
+            @include adaptive-value("margin-top", 32, 20, 1);
+            display: flex;
+            flex-direction: column;
+
+            label {
+                text-align: start;
+                @include adaptive-value("font-size", 24, 16, 1);
+                font-weight: 500;
+                color: $white;
+                @include adaptive-value("margin-bottom", 16, 8, 1);
+
+            }
+
+            input {
+                margin-bottom: 30px;
+                background-color: $white;
+                outline: none;
+                padding: 17px 24px;
+                border: none;
+                border-radius: 54px;
+                @include adaptive-value("font-size", 24, 16, 1);
+                color: $violet;
+                caret-color: $violet;
+                border: 1px solid transparent;
+                transition: all .3s ease;
+
+                &:focus {
+                    border-color: $violet;
+                    transition: all .3s ease;
+                }
+
+                &::placeholder {
+                    color: rgba($color: #000000, $alpha: 0.5);
+                }
+            }
+
+            .primary_btn {
+                background-color: $white;
+                color: $violet;
+
+                &:hover {
+                    background-color: $violet;
+                    color: $white;
+                }
+            }
+
+            #nameError,
+            #emailError {
+                display: none;
+                font-size: 16px;
+                color: $red;
+                margin-bottom: 30px;
+                text-align: start;
+
+                &.show {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    .complete_text {
+        max-width: 650px;
+        width: 100%;
+        margin: 0 auto;
+        color: $white;
+        text-align: center;
+
+        a {
+            color: inherit;
+            text-decoration: underlin e;
+        }
+    }
+}
