@@ -1,4 +1,5 @@
 import Swiper from 'swiper/bundle';
+import emailjs from '@emailjs/browser';
 
 formValidation();
 
@@ -61,6 +62,10 @@ window.addEventListener('resize', () => {
   initOrDestroySwiper();
 });
 
+// (function () {
+//   emailjs.init('lLOoBk19I4h9y7DJv');
+// })();
+
 function formValidation() {
   const form = document.getElementById('courseForm');
   const nameInput = document.getElementById('name');
@@ -69,6 +74,8 @@ function formValidation() {
   const emailError = document.getElementById('emailError');
 
   form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
     let isValid = true;
 
     if (nameInput.value.trim() === '') {
@@ -87,7 +94,40 @@ function formValidation() {
     }
 
     if (!isValid) {
-      e.preventDefault();
+      return;
     }
+
+    localStorage.setItem(
+      'courseUserData',
+      JSON.stringify({
+        name: nameInput.value.trim(),
+        email: emailInput.value.trim(),
+      }),
+    );
+
+    window.location.href =
+      'https://checkout.revolut.com/payment-link/5ffe1822-9127-412b-8627-f88da9a68be9?success_url=https://yourdomain.com/index.html';
   });
 }
+
+// const userData = JSON.parse(localStorage.getItem('courseUserData'));
+
+// if (userData) {
+//   emailjs
+//     .send(
+//       'service_z00ccsn',
+//       'template_ajpaf35',
+//       {
+//         name: userData.name,
+//         email: userData.email,
+//       },
+//       'lLOoBk19I4h9y7DJv',
+//     )
+//     .then(() => {
+//       console.log('Email sent!');
+//       localStorage.removeItem('courseUserData');
+//     })
+//     .catch((error) => {
+//       console.error('EmailJS error:', error);
+//     });
+// }

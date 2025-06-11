@@ -1,3 +1,20 @@
+html {
+    scroll-behavior: smooth;
+
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background-color: $secondary-violet;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: $violet;
+        border-radius: 3px;
+    }
+}
+
 #wrapper {
     overflow: hidden;
 }
@@ -823,5 +840,29 @@
             color: inherit;
             text-decoration: underlin e;
         }
+    }
+}
+
+.success-box {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    max-width: 500px;
+    margin: auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    max-width: max-content;
+    width: calc(100% - 40px);
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    h1 {
+        margin-bottom: 40px;
+        color: $violet;
+        @include adaptive-value("font-size", 72, 36, 1);
+        font-weight: 700;
+        line-height: 112%;
     }
 }

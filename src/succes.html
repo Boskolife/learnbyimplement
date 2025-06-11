@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment Successful</title>
+    <link rel="stylesheet" href="/styles/main.scss">
+    <script type="module" src="/js/main.js" defer></script>
+</head>
+
+<body>
+    <div class="success-box">
+        <h1>Thank you for your purchase! 🎉</h1>
+        <a href="index.html" class="primary_btn">Back to home</a>
+    </div>
+
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        (function () {
+            emailjs.init("lLOoBk19I4h9y7DJv");
+        })();
+
+        const userData=JSON.parse(localStorage.getItem('courseUserData'));
+
+        if (userData&&userData.email&&userData.name) {
+            emailjs.send("service_z00ccsn", "template_ajpaf35", {
+                name: userData.name,
+                email: userData.email
+            }).then(function (response) {
+                console.log("Email successfully sent!", response.status, response.text);
+                localStorage.removeItem('courseUserData');
+            }, function (error) {
+                console.error("EmailJS error:", error);
+            });
+        }
+    </script>
+</body>
+
+</html>
